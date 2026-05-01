@@ -919,6 +919,246 @@
   </div>
 </section>
 
+<!-- PHOTO GALLERY -->
+<section class="section reveal" style="padding-top:0;">
+  <span class="section-tag">商品實拍</span>
+  <h2 class="section-title">每一隻都是藝術品 ✨</h2>
+  <p class="section-sub">純手工編織，細節滿分，每個角度都可愛到融化。</p>
+
+  <!-- MAIN LIGHTBOX VIEWER -->
+  <div style="margin-top:2.5rem; position:relative;">
+    <div id="mainPhoto" style="
+      width:100%; max-height:560px; border-radius:24px; overflow:hidden;
+      background:#f5ede4; position:relative; cursor:zoom-in;
+      box-shadow:0 20px 60px rgba(61,43,31,0.15);
+    " onclick="openLightbox(currentPhoto)">
+      <img id="mainImg"
+        src="https://images.vocus.cc/5419035a-f113-4d6c-9faa-a292a36e6794.png"
+        alt="小象鱷魚編織娃娃"
+        style="width:100%; max-height:560px; object-fit:contain; display:block; transition:transform 0.4s;"
+        onmouseover="this.style.transform='scale(1.03)'"
+        onmouseout="this.style.transform='scale(1)'"
+        onerror="this.src='https://img.vocus.cc/vUn7tDJ41UhrUrXbDRtOH3ZqFcagvkEm66d4YrHrDjA/w:740/f:webp/plain/https://images.vocus.cc/5419035a-f113-4d6c-9faa-a292a36e6794.png'"
+      >
+      <div style="
+        position:absolute; bottom:1rem; right:1rem;
+        background:rgba(61,43,31,0.6); color:white;
+        font-size:0.75rem; font-family:'Nunito',sans-serif; font-weight:700;
+        padding:0.3rem 0.8rem; border-radius:100px; backdrop-filter:blur(4px);
+      ">點擊放大 🔍</div>
+    </div>
+
+    <!-- PREV / NEXT -->
+    <button onclick="changePhoto(-1)" style="
+      position:absolute; left:-1rem; top:50%; transform:translateY(-50%);
+      background:#fff; border:none; border-radius:50%; width:44px; height:44px;
+      box-shadow:0 4px 16px rgba(0,0,0,0.15); cursor:pointer; font-size:1.2rem;
+      transition:transform 0.2s; z-index:2;
+    " onmouseover="this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.transform='translateY(-50%)'">‹</button>
+    <button onclick="changePhoto(1)" style="
+      position:absolute; right:-1rem; top:50%; transform:translateY(-50%);
+      background:#fff; border:none; border-radius:50%; width:44px; height:44px;
+      box-shadow:0 4px 16px rgba(0,0,0,0.15); cursor:pointer; font-size:1.2rem;
+      transition:transform 0.2s; z-index:2;
+    " onmouseover="this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.transform='translateY(-50%)'">›</button>
+  </div>
+
+  <!-- THUMBNAILS -->
+  <div style="display:flex; gap:0.8rem; margin-top:1.2rem; overflow-x:auto; padding-bottom:0.5rem; scrollbar-width:none;">
+    <div class="thumb active" onclick="setPhoto(0)" style="
+      flex-shrink:0; width:100px; height:100px; border-radius:14px; overflow:hidden;
+      cursor:pointer; border:2.5px solid var(--sage); transition:all 0.2s;
+    ">
+      <img src="https://images.vocus.cc/5419035a-f113-4d6c-9faa-a292a36e6794.png"
+        style="width:100%;height:100%;object-fit:cover;"
+        onerror="this.src='https://img.vocus.cc/vUn7tDJ41UhrUrXbDRtOH3ZqFcagvkEm66d4YrHrDjA/w:740/f:webp/plain/https://images.vocus.cc/5419035a-f113-4d6c-9faa-a292a36e6794.png'">
+    </div>
+    <div class="thumb" onclick="setPhoto(1)" style="
+      flex-shrink:0; width:100px; height:100px; border-radius:14px; overflow:hidden;
+      cursor:pointer; border:2.5px solid transparent; transition:all 0.2s; opacity:0.7;
+    ">
+      <img src="https://images.vocus.cc/190ba138-c4e1-40d4-bda9-40ee34c5f379.png"
+        style="width:100%;height:100%;object-fit:cover;"
+        onerror="this.src='https://img.vocus.cc/zCKZSv4v1o2jjZqSmplbTy3XUkoewTLm8Zujc8REujA/w:740/f:webp/plain/https://images.vocus.cc/190ba138-c4e1-40d4-bda9-40ee34c5f379.png'">
+    </div>
+    <div class="thumb" onclick="setPhoto(2)" style="
+      flex-shrink:0; width:100px; height:100px; border-radius:14px; overflow:hidden;
+      cursor:pointer; border:2.5px solid transparent; transition:all 0.2s; opacity:0.7;
+    ">
+      <img src="https://images.vocus.cc/1a917c24-eadb-4967-b478-03447729e9b3.png"
+        style="width:100%;height:100%;object-fit:cover;"
+        onerror="this.src='https://img.vocus.cc/ZwJ7vFEuh27hbfH3dm_4gxbxQgzbb43NVHWPbFTbPZI/w:740/f:webp/plain/https://images.vocus.cc/1a917c24-eadb-4967-b478-03447729e9b3.png'">
+    </div>
+    <div class="thumb" onclick="setPhoto(3)" style="
+      flex-shrink:0; width:100px; height:100px; border-radius:14px; overflow:hidden;
+      cursor:pointer; border:2.5px solid transparent; transition:all 0.2s; opacity:0.7;
+    ">
+      <img src="https://images.vocus.cc/8a3c2869-23fa-48a4-81db-a37229e325bb.png"
+        style="width:100%;height:100%;object-fit:cover;"
+        onerror="this.src='https://img.vocus.cc/p3UFee46dXK893Q0Qjp98aUqjwZvf1nSYJarL3k_RQ4/w:740/f:webp/q:1/plain/https://images.vocus.cc/8a3c2869-23fa-48a4-81db-a37229e325bb.png'">
+    </div>
+    <div class="thumb" onclick="setPhoto(4)" style="
+      flex-shrink:0; width:100px; height:100px; border-radius:14px; overflow:hidden;
+      cursor:pointer; border:2.5px solid transparent; transition:all 0.2s; opacity:0.7;
+    ">
+      <img src="https://images.vocus.cc/a4ebafae-5592-431b-a45d-029130749024.png"
+        style="width:100%;height:100%;object-fit:cover;"
+        onerror="this.src='https://img.vocus.cc/Dr28ClegEclSe4ifDQL7W2uIFkeD2QlRJektn8gUEWg/w:740/f:webp/q:1/plain/https://images.vocus.cc/a4ebafae-5592-431b-a45d-029130749024.png'">
+    </div>
+    <!-- images from uploaded files as additional gallery items -->
+    <div class="thumb" onclick="setPhoto(5)" style="
+      flex-shrink:0; width:100px; height:100px; border-radius:14px; overflow:hidden;
+      cursor:pointer; border:2.5px solid transparent; transition:all 0.2s; opacity:0.7;
+      background:var(--warm-tan); display:flex; align-items:center; justify-content:center; font-size:2rem;
+    ">🐘</div>
+  </div>
+
+  <!-- PHOTO CAPTIONS -->
+  <div id="photoCaption" style="
+    text-align:center; margin-top:1rem; color:var(--text-muted);
+    font-size:0.85rem; min-height:1.5rem; transition:opacity 0.3s;
+  ">療癒系編織小象系列・手作實拍</div>
+</section>
+
+<!-- HOW TO MAKE -->
+<section class="section reveal" style="padding-top:0;">
+  <span class="section-tag">製作工藝</span>
+  <h2 class="section-title">一針一線的用心 🧶</h2>
+  <p class="section-sub">每一隻娃娃都經過 6 個嚴謹工序，從起針到裝飾，全程純手工完成。</p>
+
+  <div style="
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:1.5rem; margin-top:2.5rem;
+  ">
+    <!-- 小象製作 -->
+    <div style="background:#fff; border-radius:24px; padding:2rem; box-shadow:0 4px 20px rgba(61,43,31,0.07);">
+      <div style="font-size:1.1rem; font-weight:900; margin-bottom:1.2rem; display:flex; align-items:center; gap:0.5rem;">
+        🐘 小象製作步驟
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0.9rem;">
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--warm-pink);color:var(--dark-brown);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">1</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">頭部</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">環起針，鉤短針，逐圈加針至所需大小，填充。</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--warm-pink);color:var(--dark-brown);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">2</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">耳朵 ×2</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">環起針，鉤短針，逐圈加針與減針，完成後稍微壓平。</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--warm-pink);color:var(--dark-brown);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">3</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">鼻子</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">鎖針起針，鉤短針，逐圈不加減針，稍微彎曲。</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--warm-pink);color:var(--dark-brown);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">4</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">身體</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">環起針，鉤短針，逐圈加針再減針，填充。</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--sage);color:white;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">5</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">組合</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">縫合頭、耳朵、鼻子與身體，裝上眼睛。</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:white;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">6</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">裝飾</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">可加花冠、圍巾、蝴蝶結或小背包等裝飾。</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 鱷魚製作 -->
+    <div style="background:#fff; border-radius:24px; padding:2rem; box-shadow:0 4px 20px rgba(61,43,31,0.07);">
+      <div style="font-size:1.1rem; font-weight:900; margin-bottom:1.2rem; display:flex; align-items:center; gap:0.5rem;">
+        🐊 鱷魚製作步驟
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0.9rem;">
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:rgba(138,170,124,0.3);color:var(--deep-sage);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">1</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">頭部（圓形）</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">起6針環，每圈加針至約36針，鉤數圈不加減，填充，形成圓潤頭型。</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:rgba(138,170,124,0.3);color:var(--deep-sage);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">2</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">嘴巴（上下顎）</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">前端延伸橢圓形，下巴用白線鉤短針，縫合成微笑嘴。</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:rgba(138,170,124,0.3);color:var(--deep-sage);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">3</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">身體（長橢圓）</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">中段不加減，尾部逐漸減針，做出流線型身體。</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:rgba(138,170,124,0.3);color:var(--deep-sage);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">4</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">四肢 + 尾巴</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">每隻6–12針小圓筒縫於兩側；持續減針做彎曲尾巴。</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--sage);color:white;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">5</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">鱗片（重點）</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">使用「鱷魚針（Crocodile Stitch）」製作立體鱗片，讓背部更可愛立體。</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start;">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:white;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;flex-shrink:0;">6</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">組裝與表情</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">縫合頭、身、腳，裝安全眼＋腮紅刺繡，完成可愛娃娃！</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATERIALS -->
+  <div style="
+    margin-top:2rem; background:linear-gradient(135deg,#f5ede4,#e8f0e4);
+    border-radius:20px; padding:1.8rem 2rem;
+    display:flex; flex-wrap:wrap; gap:2rem; align-items:flex-start;
+  ">
+    <div style="flex:1; min-width:200px;">
+      <div style="font-weight:900; margin-bottom:0.8rem;">🧵 材料清單</div>
+      <div style="font-size:0.85rem; color:var(--text-muted); line-height:2.2;">
+        • 4號毛線（灰、粉、綠、米白等）<br>
+        • 鉤針 2.5mm<br>
+        • 安全眼睛 6–8mm<br>
+        • 填充棉<br>
+        • 縫針、記號扣、剪刀
+      </div>
+    </div>
+    <div style="flex:1; min-width:200px;">
+      <div style="font-weight:900; margin-bottom:0.8rem;">💡 小技巧 Tips</div>
+      <div style="font-size:0.85rem; color:var(--text-muted); line-height:2.2;">
+        • 選擇柔軟毛線，成品更可愛！<br>
+        • 填充棉要均勻，頭部和身體要飽滿才會站穩。<br>
+        • 裝飾可依節日或心情自由搭配，變化無限。<br>
+        • 鱗片只做背部即可（省時間又好看）
+      </div>
+    </div>
+    <div style="flex:1; min-width:200px;">
+      <div style="font-weight:900; margin-bottom:0.8rem;">🎨 可搭配裝飾</div>
+      <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.3rem;">
+        <span style="background:#fff;border-radius:100px;padding:0.3rem 0.8rem;font-size:0.8rem;box-shadow:0 2px 8px rgba(0,0,0,0.07);">🌸 小花花冠</span>
+        <span style="background:#fff;border-radius:100px;padding:0.3rem 0.8rem;font-size:0.8rem;box-shadow:0 2px 8px rgba(0,0,0,0.07);">🎀 蝴蝶結</span>
+        <span style="background:#fff;border-radius:100px;padding:0.3rem 0.8rem;font-size:0.8rem;box-shadow:0 2px 8px rgba(0,0,0,0.07);">🎩 草帽</span>
+        <span style="background:#fff;border-radius:100px;padding:0.3rem 0.8rem;font-size:0.8rem;box-shadow:0 2px 8px rgba(0,0,0,0.07);">🧣 圍巾</span>
+        <span style="background:#fff;border-radius:100px;padding:0.3rem 0.8rem;font-size:0.8rem;box-shadow:0 2px 8px rgba(0,0,0,0.07);">😴 睡帽</span>
+        <span style="background:#fff;border-radius:100px;padding:0.3rem 0.8rem;font-size:0.8rem;box-shadow:0 2px 8px rgba(0,0,0,0.07);">🎒 小背包</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" style="
+  display:none; position:fixed; inset:0; z-index:600;
+  background:rgba(0,0,0,0.88); align-items:center; justify-content:center;
+  padding:2rem;
+" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="" style="
+    max-width:90vw; max-height:90vh; border-radius:16px;
+    box-shadow:0 20px 80px rgba(0,0,0,0.6); object-fit:contain;
+  ">
+  <button onclick="closeLightbox()" style="
+    position:fixed; top:1.5rem; right:1.5rem;
+    background:rgba(255,255,255,0.15); border:none; border-radius:50%;
+    width:44px; height:44px; color:white; font-size:1.4rem; cursor:pointer;
+  ">✕</button>
+</div>
+
+<style>
+  .thumb:hover { opacity:1 !important; border-color:var(--warm-pink) !important; }
+  .thumb.active { border-color:var(--sage) !important; opacity:1 !important; }
+  #lightbox.open { display:flex; }
+</style>
+
 <!-- CTA -->
 <div class="cta-section reveal" style="max-width:1100px;margin:0 auto 5rem;margin-left:2rem;margin-right:2rem;">
   <div class="cta-title">讓療癒陪著你走每一天 🐘🐊</div>
@@ -1205,6 +1445,53 @@ function showToast(msg) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
 }
+
+// ── PHOTO GALLERY ──
+const photos = [
+  { src: 'https://images.vocus.cc/5419035a-f113-4d6c-9faa-a292a36e6794.png', fallback: 'https://img.vocus.cc/vUn7tDJ41UhrUrXbDRtOH3ZqFcagvkEm66d4YrHrDjA/w:740/f:webp/plain/https://images.vocus.cc/5419035a-f113-4d6c-9faa-a292a36e6794.png', caption: '小象系列款式總覽・花冠款＋蝴蝶結款＋圍巾款＋小背包款' },
+  { src: 'https://images.vocus.cc/190ba138-c4e1-40d4-bda9-40ee34c5f379.png', fallback: 'https://img.vocus.cc/zCKZSv4v1o2jjZqSmplbTy3XUkoewTLm8Zujc8REujA/w:740/f:webp/plain/https://images.vocus.cc/190ba138-c4e1-40d4-bda9-40ee34c5f379.png', caption: '鱷魚系列款式總覽・微笑款＋眨眼款＋戴帽款＋戴頭巾款' },
+  { src: 'https://images.vocus.cc/1a917c24-eadb-4967-b478-03447729e9b3.png', fallback: 'https://img.vocus.cc/ZwJ7vFEuh27hbfH3dm_4gxbxQgzbb43NVHWPbFTbPZI/w:740/f:webp/plain/https://images.vocus.cc/1a917c24-eadb-4967-b478-03447729e9b3.png', caption: '手機包包小吊飾商品廣告圖・療癒系隨身攜帶' },
+  { src: 'https://images.vocus.cc/8a3c2869-23fa-48a4-81db-a37229e325bb.png', fallback: 'https://img.vocus.cc/p3UFee46dXK893Q0Qjp98aUqjwZvf1nSYJarL3k_RQ4/w:740/f:webp/q:1/plain/https://images.vocus.cc/8a3c2869-23fa-48a4-81db-a37229e325bb.png', caption: '配件自由搭配・多種風格任意組合' },
+  { src: 'https://images.vocus.cc/a4ebafae-5592-431b-a45d-029130749024.png', fallback: 'https://img.vocus.cc/Dr28ClegEclSe4ifDQL7W2uIFkeD2QlRJektn8gUEWg/w:740/f:webp/q:1/plain/https://images.vocus.cc/a4ebafae-5592-431b-a45d-029130749024.png', caption: '可愛編織小象系列・多種風格萌化你的心' },
+  { src: '', fallback: '', caption: '更多款式敬請期待 🐘🐊' },
+];
+let currentPhoto = 0;
+
+function setPhoto(idx) {
+  currentPhoto = idx;
+  const p = photos[idx];
+  const img = document.getElementById('mainImg');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = p.src || p.fallback;
+    if (p.fallback) img.onerror = () => { img.src = p.fallback; };
+    img.style.opacity = '1';
+    document.getElementById('photoCaption').textContent = p.caption;
+  }, 200);
+  document.querySelectorAll('.thumb').forEach((t, i) => {
+    t.classList.toggle('active', i === idx);
+  });
+}
+
+function changePhoto(dir) {
+  setPhoto((currentPhoto + dir + photos.length) % photos.length);
+}
+
+function openLightbox(idx) {
+  const p = photos[idx];
+  if (!p.src && !p.fallback) return;
+  document.getElementById('lightboxImg').src = p.src || p.fallback;
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+document.getElementById('mainImg').style.transition = 'opacity 0.2s';
+
+// auto-rotate gallery every 4s
+setInterval(() => changePhoto(1), 4000);
 
 // ── SCROLL REVEAL ──
 const revealEls = document.querySelectorAll('.reveal, .tl-item');
