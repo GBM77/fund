@@ -1190,9 +1190,10 @@
 
 <!-- ORDER MODAL -->
 <div id="orderModal" style="
-  display:none; position:fixed; inset:0; z-index:500;
+  position:fixed; inset:0; z-index:500;
   background:rgba(61,43,31,0.55); backdrop-filter:blur(6px);
   align-items:center; justify-content:center; padding:1.5rem;
+  display:none;
 ">
   <div style="
     background:var(--cream); border-radius:28px;
@@ -1297,7 +1298,6 @@
 </div>
 
 <style>
-  #orderModal.open { display:flex; }
   input::placeholder, textarea::placeholder { color:#bbb; }
 </style>
 
@@ -1389,11 +1389,16 @@ function checkout() {
   document.getElementById('formScreen').style.display = 'block';
   document.getElementById('successScreen').style.display = 'none';
   document.getElementById('orderForm').reset();
-  document.getElementById('orderModal').classList.add('open');
+  // 直接用 style 控制顯示，避免 CSS 優先權衝突
+  const modal = document.getElementById('orderModal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
-  document.getElementById('orderModal').classList.remove('open');
+  const modal = document.getElementById('orderModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
   document.getElementById('stickyCart').classList.remove('visible');
 }
 
@@ -1434,6 +1439,11 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
 // close modal on backdrop click
 document.getElementById('orderModal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
+});
+
+// close lightbox
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
 });
 
 // ── TOAST ──
