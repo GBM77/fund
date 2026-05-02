@@ -644,9 +644,209 @@
     .cta-section { padding: 2.5rem 1.5rem; margin: 0 1rem 3rem; }
     .timeline::before { left: 1.5rem; }
   }
+
+  /* ── MODE TOGGLE BAR ── */
+  #modeBar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+    background: var(--dark-brown);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.55rem 1.2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  #modeBar .bar-title {
+    color: rgba(255,255,255,0.65); font-size: 0.72rem;
+    font-family: 'Nunito', sans-serif; font-weight: 700; letter-spacing: 0.08em;
+  }
+  #modeToggleBtn {
+    background: var(--warm-pink); color: var(--dark-brown); border: none;
+    border-radius: 100px; padding: 0.38rem 1rem;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem;
+    cursor: pointer; display: flex; align-items: center; gap: 0.35rem;
+    transition: background 0.2s, transform 0.1s; white-space: nowrap;
+  }
+  #modeToggleBtn:hover { transform: scale(1.05); }
+  #modeToggleBtn.mob { background: var(--sage); color: white; }
+  body { padding-top: 42px; }
+
+  /* ── MOBILE VIEW ── */
+  #mobileView {
+    display: none; position: fixed;
+    inset: 42px 0 0 0; z-index: 800;
+    background: var(--cream); overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  #mobileView.active { display: block; }
+  body.mob-mode #desktopView { display: none; }
+
+  /* ── MOBILE COMPONENTS ── */
+  .mv-hero {
+    background: linear-gradient(160deg, #f8f0e8 0%, #e8f0e2 100%);
+    padding: 1.8rem 1.2rem 1.2rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .mv-hero::before { content:'🐘🐊'; position:absolute; font-size:7rem; opacity:0.05; top:-1rem; right:-0.5rem; }
+  .mv-badge {
+    display:inline-block; background:var(--warm-pink); color:var(--dark-brown);
+    font-size:0.68rem; font-family:'Nunito',sans-serif; font-weight:800;
+    letter-spacing:0.12em; padding:0.28rem 0.85rem; border-radius:100px; margin-bottom:0.7rem;
+  }
+  .mv-title {
+    font-size:2rem; font-weight:900; line-height:1.15;
+    background:linear-gradient(135deg,var(--dark-brown),var(--deep-sage));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .mv-animals { font-size:3rem; margin:0.6rem 0; animation:float 3s ease-in-out infinite; }
+  .mv-sub { font-size:0.78rem; color:var(--text-muted); line-height:1.6; }
+
+  .mv-progress {
+    margin:0.9rem; background:#fff; border-radius:18px;
+    padding:1.2rem; box-shadow:0 6px 24px rgba(61,43,31,0.1);
+  }
+  .mv-amount { font-size:1.7rem; font-weight:900; color:var(--deep-sage); font-family:'Nunito',sans-serif; }
+  .mv-goal { font-size:0.72rem; color:var(--text-muted); margin-bottom:0.6rem; }
+  .mv-bar-bg { background:var(--warm-tan); border-radius:100px; height:11px; overflow:hidden; }
+  .mv-bar-fill {
+    height:100%; border-radius:100px;
+    background:linear-gradient(90deg,var(--sage),var(--deep-sage));
+    width:75%; position:relative; overflow:hidden;
+  }
+  .mv-bar-fill::after {
+    content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+    animation:shimmer 2s 1s infinite;
+  }
+  .mv-stats { display:flex; justify-content:space-around; margin-top:0.9rem; text-align:center; }
+  .mv-stat-num { font-size:1.25rem; font-weight:900; font-family:'Nunito',sans-serif; display:block; }
+  .mv-stat-label { font-size:0.67rem; color:var(--text-muted); }
+
+  .mv-countdown {
+    margin:0 0.9rem 0.9rem;
+    background:linear-gradient(135deg,var(--deep-sage),var(--croc-green));
+    border-radius:14px; padding:0.8rem 1rem;
+    display:flex; align-items:center; justify-content:space-between;
+    color:white; font-family:'Nunito',sans-serif; font-weight:800;
+  }
+  .mv-cd-label { font-size:0.72rem; opacity:0.85; }
+  .mv-cd-nums { display:flex; gap:0.25rem; align-items:center; font-size:1rem; }
+  .mv-cd-block { background:rgba(255,255,255,0.22); border-radius:6px; padding:0.18rem 0.45rem; min-width:1.8rem; text-align:center; }
+
+  .mv-sec { padding:1.2rem 0.9rem 0.4rem; }
+  .mv-sec-tag { font-size:0.65rem; font-family:'Nunito',sans-serif; font-weight:800; letter-spacing:0.18em; color:var(--text-muted); text-transform:uppercase; }
+  .mv-sec-title { font-size:1.25rem; font-weight:900; margin-top:0.2rem; margin-bottom:0.6rem; }
+
+  .mv-chips { display:flex; gap:0.65rem; overflow-x:auto; padding:0.3rem 0.9rem 0.8rem; scrollbar-width:none; }
+  .mv-chips::-webkit-scrollbar { display:none; }
+  .mv-chip {
+    flex-shrink:0; background:#fff; border:2px solid var(--warm-tan);
+    border-radius:14px; padding:0.7rem 0.85rem; text-align:center;
+    cursor:pointer; transition:all 0.2s; min-width:82px;
+  }
+  .mv-chip.sel { border-color:var(--sage); background:rgba(138,170,124,0.12); }
+  .mv-chip-em { font-size:1.7rem; display:block; }
+  .mv-chip-nm { font-size:0.67rem; font-weight:700; margin-top:0.25rem; line-height:1.3; }
+
+  .mv-pkgs { display:flex; flex-direction:column; gap:0.75rem; padding:0 0.9rem; }
+  .mv-pkg {
+    border-radius:16px; padding:1rem 1.1rem;
+    display:flex; align-items:center; justify-content:space-between;
+    cursor:pointer; transition:transform 0.15s; position:relative; overflow:hidden;
+  }
+  .mv-pkg:active { transform:scale(0.97); }
+  .mv-pkg-e { background:linear-gradient(135deg,#f0ebe4,#e8ddd2); }
+  .mv-pkg-c { background:linear-gradient(135deg,#e4ede0,#d4e4ce); }
+  .mv-pkg-p { background:linear-gradient(135deg,#3d2b1f,#5a3d2b); color:white; }
+  .mv-pkg-hot {
+    position:absolute; top:0.55rem; right:0.55rem;
+    background:var(--gold); color:white; font-size:0.58rem;
+    font-family:'Nunito',sans-serif; font-weight:800; padding:0.12rem 0.45rem; border-radius:100px;
+  }
+  .mv-pkg-l { display:flex; align-items:center; gap:0.7rem; }
+  .mv-pkg-icon { font-size:1.8rem; }
+  .mv-pkg-name { font-weight:900; font-size:0.9rem; }
+  .mv-pkg-desc { font-size:0.68rem; opacity:0.7; margin-top:0.1rem; }
+  .mv-pkg-price { font-size:1.15rem; font-weight:900; font-family:'Nunito',sans-serif; color:var(--deep-sage); }
+  .mv-pkg-p .mv-pkg-price { color:var(--warm-pink); }
+
+  .mv-gallery { padding:0 0.9rem; }
+  .mv-main-img { width:100%; border-radius:16px; overflow:hidden; background:#f5ede4; aspect-ratio:4/3; }
+  .mv-main-img img { width:100%; height:100%; object-fit:contain; display:block; transition:opacity 0.2s; }
+  .mv-thumbs { display:flex; gap:0.5rem; overflow-x:auto; padding:0.5rem 0; scrollbar-width:none; }
+  .mv-thumbs::-webkit-scrollbar { display:none; }
+  .mv-thumb { flex-shrink:0; width:62px; height:62px; border-radius:9px; overflow:hidden; border:2px solid transparent; cursor:pointer; transition:all 0.2s; opacity:0.6; }
+  .mv-thumb.active { border-color:var(--sage); opacity:1; }
+  .mv-thumb img { width:100%; height:100%; object-fit:cover; }
+
+  .mv-feats { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; padding:0 0.9rem; }
+  .mv-feat { background:#fff; border-radius:13px; padding:0.9rem 0.7rem; text-align:center; box-shadow:0 2px 8px rgba(61,43,31,0.06); }
+  .mv-feat-icon { font-size:1.5rem; margin-bottom:0.3rem; }
+  .mv-feat-title { font-size:0.75rem; font-weight:700; }
+  .mv-feat-desc { font-size:0.65rem; color:var(--text-muted); margin-top:0.2rem; line-height:1.5; }
+
+  .mv-testis { display:flex; gap:0.7rem; overflow-x:auto; padding:0 0.9rem 0.9rem; scrollbar-width:none; }
+  .mv-testis::-webkit-scrollbar { display:none; }
+  .mv-testi { flex-shrink:0; width:220px; background:#fff; border-radius:14px; padding:1.1rem; box-shadow:0 2px 10px rgba(61,43,31,0.07); }
+  .mv-testi-text { font-size:0.75rem; line-height:1.7; }
+  .mv-testi-name { font-size:0.68rem; font-weight:700; margin-top:0.6rem; color:var(--text-muted); }
+
+  .mv-cta {
+    margin:1.2rem 0.9rem 0; background:linear-gradient(135deg,var(--dark-brown),#5a3d2b);
+    border-radius:18px; padding:1.5rem 1.2rem; text-align:center; color:white;
+  }
+  .mv-cta-title { font-size:1.15rem; font-weight:900; margin-bottom:0.4rem; }
+  .mv-cta-sub { font-size:0.77rem; opacity:0.75; line-height:1.7; margin-bottom:1rem; }
+  .mv-cta-btn {
+    background:var(--warm-pink); color:var(--dark-brown); border:none;
+    border-radius:100px; padding:0.8rem 1.8rem;
+    font-family:'Noto Serif TC',serif; font-weight:700; font-size:0.95rem; cursor:pointer;
+  }
+  .mv-footer { text-align:center; padding:1.5rem 1rem 1rem; font-size:0.72rem; color:var(--text-muted); border-top:1px solid var(--warm-tan); margin-top:1.2rem; }
+
+  /* mobile modal (bottom sheet) */
+  #mvModal {
+    display:none; position:fixed; inset:42px 0 0 0; z-index:850;
+    background:rgba(61,43,31,0.55); backdrop-filter:blur(4px);
+    align-items:flex-end; justify-content:center;
+  }
+  #mvModal.open { display:flex; }
+  .mv-sheet {
+    background:var(--cream); border-radius:22px 22px 0 0;
+    width:100%; max-height:90vh; overflow-y:auto;
+    padding:1.2rem 1.1rem 2rem;
+    animation:slideUp 0.32s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+  .mv-handle { width:38px; height:4px; background:var(--warm-tan); border-radius:100px; margin:0 auto 1.1rem; }
+
+  /* mobile sticky cart */
+  #mvCart {
+    position:fixed; bottom:0; left:0; right:0; z-index:810;
+    background:#fff; box-shadow:0 -5px 20px rgba(61,43,31,0.12);
+    padding:0.7rem 0.9rem; display:flex; align-items:center; gap:0.7rem;
+    transform:translateY(100%); transition:transform 0.3s;
+  }
+  #mvCart.visible { transform:translateY(0); }
+  .mv-cart-info { flex:1; }
+  .mv-cart-pkg { font-size:0.76rem; font-weight:700; }
+  .mv-cart-price { font-size:1.05rem; font-weight:900; color:var(--deep-sage); font-family:'Nunito',sans-serif; }
+  .mv-cart-btn {
+    background:var(--deep-sage); color:white; border:none; border-radius:100px;
+    padding:0.7rem 1.1rem; font-family:'Noto Serif TC',serif; font-weight:700;
+    font-size:0.85rem; cursor:pointer; white-space:nowrap;
+  }
 </style>
 </head>
 <body>
+
+<!-- ── MODE BAR ── -->
+<div id="modeBar">
+  <span class="bar-title">🐘 編織小象＆鱷魚募資</span>
+  <button id="modeToggleBtn" onclick="toggleMode()">
+    <span id="modeIcon">📱</span>
+    <span id="modeTxt">手機專用版</span>
+  </button>
+</div>
+
+<!-- ── DESKTOP VIEW ── -->
+<div id="desktopView">
 
 <!-- HERO -->
 <section class="hero">
@@ -1176,7 +1376,156 @@
   <div style="margin-top:0.5rem;">手作編織 · 環保材質 · 台灣製造</div>
 </footer>
 
-<!-- STICKY CART -->
+</div><!-- /desktopView -->
+
+<!-- ── MOBILE VIEW ── -->
+<div id="mobileView">
+
+  <!-- hero -->
+  <div class="mv-hero">
+    <div class="mv-badge">🌿 療癒系手作募資計畫 · 2026</div>
+    <div class="mv-title">編織小象＆鱷魚</div>
+    <div class="mv-animals">🐘♡🐊</div>
+    <div class="mv-sub">手作編織 · 可愛隨身帶著走<br>每一隻都是獨一無二的療癒小夥伴</div>
+  </div>
+
+  <!-- progress -->
+  <div class="mv-progress">
+    <div class="mv-amount">NT$ 112,400</div>
+    <div class="mv-goal">目標 NT$150,000</div>
+    <div class="mv-bar-bg"><div class="mv-bar-fill"></div></div>
+    <div class="mv-stats">
+      <div><span class="mv-stat-num">247</span><div class="mv-stat-label">支持人數</div></div>
+      <div style="width:1px;background:var(--warm-tan)"></div>
+      <div><span class="mv-stat-num" id="mv-days">21</span><div class="mv-stat-label">剩餘天數</div></div>
+      <div style="width:1px;background:var(--warm-tan)"></div>
+      <div><span class="mv-stat-num">75%</span><div class="mv-stat-label">達成率</div></div>
+    </div>
+  </div>
+
+  <!-- countdown -->
+  <div class="mv-countdown">
+    <div class="mv-cd-label">⏰ 募資截止倒數</div>
+    <div class="mv-cd-nums">
+      <span class="mv-cd-block" id="mv-cd-d">21</span>天
+      <span class="mv-cd-block" id="mv-cd-h">00</span>:
+      <span class="mv-cd-block" id="mv-cd-m">00</span>:
+      <span class="mv-cd-block" id="mv-cd-s">00</span>
+    </div>
+  </div>
+
+  <!-- gallery -->
+  <div class="mv-sec">
+    <div class="mv-sec-tag">商品實拍</div>
+    <div class="mv-sec-title">每一隻都是藝術品 ✨</div>
+  </div>
+  <div class="mv-gallery">
+    <div class="mv-main-img">
+      <img id="mv-mainImg" src="https://images.vocus.cc/5419035a-f113-4d6c-9faa-a292a36e6794.png"
+        onerror="this.src='https://img.vocus.cc/vUn7tDJ41UhrUrXbDRtOH3ZqFcagvkEm66d4YrHrDjA/w:740/f:webp/plain/https://images.vocus.cc/5419035a-f113-4d6c-9faa-a292a36e6794.png'">
+    </div>
+    <div class="mv-thumbs">
+      <div class="mv-thumb active" onclick="mvSetPhoto(0)"><img src="https://images.vocus.cc/5419035a-f113-4d6c-9faa-a292a36e6794.png" onerror="this.src='https://img.vocus.cc/vUn7tDJ41UhrUrXbDRtOH3ZqFcagvkEm66d4YrHrDjA/w:740/f:webp/plain/https://images.vocus.cc/5419035a-f113-4d6c-9faa-a292a36e6794.png'"></div>
+      <div class="mv-thumb" onclick="mvSetPhoto(1)"><img src="https://images.vocus.cc/190ba138-c4e1-40d4-bda9-40ee34c5f379.png" onerror="this.src='https://img.vocus.cc/zCKZSv4v1o2jjZqSmplbTy3XUkoewTLm8Zujc8REujA/w:740/f:webp/plain/https://images.vocus.cc/190ba138-c4e1-40d4-bda9-40ee34c5f379.png'"></div>
+      <div class="mv-thumb" onclick="mvSetPhoto(2)"><img src="https://images.vocus.cc/1a917c24-eadb-4967-b478-03447729e9b3.png" onerror="this.src='https://img.vocus.cc/ZwJ7vFEuh27hbfH3dm_4gxbxQgzbb43NVHWPbFTbPZI/w:740/f:webp/plain/https://images.vocus.cc/1a917c24-eadb-4967-b478-03447729e9b3.png'"></div>
+      <div class="mv-thumb" onclick="mvSetPhoto(3)"><img src="https://images.vocus.cc/8a3c2869-23fa-48a4-81db-a37229e325bb.png" onerror="this.src='https://img.vocus.cc/p3UFee46dXK893Q0Qjp98aUqjwZvf1nSYJarL3k_RQ4/w:740/f:webp/q:1/plain/https://images.vocus.cc/8a3c2869-23fa-48a4-81db-a37229e325bb.png'"></div>
+      <div class="mv-thumb" onclick="mvSetPhoto(4)"><img src="https://images.vocus.cc/a4ebafae-5592-431b-a45d-029130749024.png" onerror="this.src='https://img.vocus.cc/Dr28ClegEclSe4ifDQL7W2uIFkeD2QlRJektn8gUEWg/w:740/f:webp/q:1/plain/https://images.vocus.cc/a4ebafae-5592-431b-a45d-029130749024.png'"></div>
+    </div>
+  </div>
+
+  <!-- variants -->
+  <div class="mv-sec">
+    <div class="mv-sec-tag">選擇款式</div>
+    <div class="mv-sec-title">你喜歡哪一款？</div>
+  </div>
+  <div class="mv-chips">
+    <div class="mv-chip" onclick="mvSelectChip(this,'小象花冠款')"><span class="mv-chip-em">🌸</span><div class="mv-chip-nm">小象<br>花冠款</div></div>
+    <div class="mv-chip" onclick="mvSelectChip(this,'小象蝴蝶結款')"><span class="mv-chip-em">🎀</span><div class="mv-chip-nm">小象<br>蝴蝶結款</div></div>
+    <div class="mv-chip" onclick="mvSelectChip(this,'小象圍巾款')"><span class="mv-chip-em">🧣</span><div class="mv-chip-nm">小象<br>圍巾款</div></div>
+    <div class="mv-chip" onclick="mvSelectChip(this,'小象小背包款')"><span class="mv-chip-em">🎒</span><div class="mv-chip-nm">小象<br>小背包款</div></div>
+    <div class="mv-chip" onclick="mvSelectChip(this,'鱷魚微笑款')"><span class="mv-chip-em">😊</span><div class="mv-chip-nm">鱷魚<br>微笑款</div></div>
+    <div class="mv-chip" onclick="mvSelectChip(this,'鱷魚眨眼款')"><span class="mv-chip-em">😉</span><div class="mv-chip-nm">鱷魚<br>眨眼款</div></div>
+    <div class="mv-chip" onclick="mvSelectChip(this,'鱷魚戴帽款')"><span class="mv-chip-em">🎩</span><div class="mv-chip-nm">鱷魚<br>戴帽款</div></div>
+    <div class="mv-chip" onclick="mvSelectChip(this,'鱷魚戴頭巾款')"><span class="mv-chip-em">🌻</span><div class="mv-chip-nm">鱷魚<br>戴頭巾款</div></div>
+  </div>
+
+  <!-- packages -->
+  <div class="mv-sec">
+    <div class="mv-sec-tag">支持方案</div>
+    <div class="mv-sec-title">選擇你的方案</div>
+  </div>
+  <div class="mv-pkgs">
+    <div class="mv-pkg mv-pkg-e" onclick="mvAddCart('小象單人組',380)">
+      <div class="mv-pkg-l">
+        <div class="mv-pkg-icon">🐘</div>
+        <div><div class="mv-pkg-name">小象單人組</div><div class="mv-pkg-desc">吊飾×1・配件・禮盒・小卡</div></div>
+      </div>
+      <div class="mv-pkg-price">NT$380</div>
+    </div>
+    <div class="mv-pkg mv-pkg-c" onclick="mvAddCart('鱷魚單人組',380)">
+      <div class="mv-pkg-l">
+        <div class="mv-pkg-icon">🐊</div>
+        <div><div class="mv-pkg-name">鱷魚單人組</div><div class="mv-pkg-desc">吊飾×1・配件・禮盒・小卡</div></div>
+      </div>
+      <div class="mv-pkg-price">NT$380</div>
+    </div>
+    <div class="mv-pkg mv-pkg-p" onclick="mvAddCart('最佳拍檔組合',680)">
+      <span class="mv-pkg-hot">🌟 最受歡迎</span>
+      <div class="mv-pkg-l">
+        <div class="mv-pkg-icon">🐘🐊</div>
+        <div><div class="mv-pkg-name">最佳拍檔組合</div><div class="mv-pkg-desc" style="color:rgba(255,255,255,0.65)">雙吊飾・禮盒・限量貼紙 省NT$80</div></div>
+      </div>
+      <div class="mv-pkg-price">NT$680</div>
+    </div>
+  </div>
+
+  <!-- features -->
+  <div class="mv-sec">
+    <div class="mv-sec-tag">為什麼選我們</div>
+    <div class="mv-sec-title">療癒的理由</div>
+  </div>
+  <div class="mv-feats">
+    <div class="mv-feat"><div class="mv-feat-icon">🧶</div><div class="mv-feat-title">純手工編織</div><div class="mv-feat-desc">職人一針一線親手完成</div></div>
+    <div class="mv-feat"><div class="mv-feat-icon">🌿</div><div class="mv-feat-title">環保材質</div><div class="mv-feat-desc">無毒填充棉，安心把玩</div></div>
+    <div class="mv-feat"><div class="mv-feat-icon">🎨</div><div class="mv-feat-title">自由搭配</div><div class="mv-feat-desc">多款配件任意組合</div></div>
+    <div class="mv-feat"><div class="mv-feat-icon">🎁</div><div class="mv-feat-title">精美禮盒</div><div class="mv-feat-desc">附手寫祝福小卡</div></div>
+  </div>
+
+  <!-- testimonials -->
+  <div class="mv-sec">
+    <div class="mv-sec-tag">支持者說</div>
+    <div class="mv-sec-title">他們都融化了 ♡</div>
+  </div>
+  <div class="mv-testis">
+    <div class="mv-testi">
+      <div class="mv-testi-text">拿到的瞬間整個人融化！小象的花冠做得超仔細，每天心情都變好了。</div>
+      <div class="mv-testi-name">🌸 小芸 @台北 &nbsp;<span style="color:var(--gold)">★★★★★</span></div>
+    </div>
+    <div class="mv-testi">
+      <div class="mv-testi-text">送給閨蜜當生日禮物，她說這是今年收到最可愛的禮物！包裝很精緻。</div>
+      <div class="mv-testi-name">🎀 Phoebe @台中 &nbsp;<span style="color:var(--gold)">★★★★★</span></div>
+    </div>
+    <div class="mv-testi">
+      <div class="mv-testi-text">鱷魚戴帽款超有個性！掛在鑰匙圈上，朋友都問哪裡買的。</div>
+      <div class="mv-testi-name">🐊 阿仁 @高雄 &nbsp;<span style="color:var(--gold)">★★★★★</span></div>
+    </div>
+  </div>
+
+  <!-- cta -->
+  <div class="mv-cta">
+    <div class="mv-cta-title">讓療癒陪著你走每一天 🐘🐊</div>
+    <div class="mv-cta-sub">限量手作・錯過不再<br>每一隻都帶著職人的心意與溫度</div>
+    <button class="mv-cta-btn" onclick="document.querySelector('.mv-pkgs').scrollIntoView({behavior:'smooth'})">立即選擇方案</button>
+  </div>
+
+  <div class="mv-footer">
+    🐘 ♡ 🐊<br>
+    療癒系編織小象＆鱷魚募資計畫 · 2026<br>
+    手作編織 · 環保材質 · 台灣製造
+  </div>
+</div><!-- /mobileView -->
+
+<!-- STICKY CART (desktop) -->
 <div class="sticky-cart" id="stickyCart">
   <div class="cart-info">
     🛒 已選：<span id="cartItem">尚未選擇</span><br>
@@ -1300,6 +1649,63 @@
 <style>
   input::placeholder, textarea::placeholder { color:#bbb; }
 </style>
+
+<!-- MOBILE STICKY CART -->
+<div id="mvCart">
+  <div class="mv-cart-info">
+    <div class="mv-cart-pkg" id="mv-cartPkg">🛒 尚未選擇方案</div>
+    <div class="mv-cart-price" id="mv-cartPrice">NT$0</div>
+  </div>
+  <button class="mv-cart-btn" onclick="mvCheckout()">確認支持 →</button>
+</div>
+
+<!-- MOBILE MODAL (bottom sheet) -->
+<div id="mvModal">
+  <div class="mv-sheet">
+    <div class="mv-handle"></div>
+
+    <!-- success -->
+    <div id="mv-success" style="display:none;text-align:center;padding:1rem 0;">
+      <div style="font-size:3.5rem;">🎉</div>
+      <div style="font-size:1.3rem;font-weight:900;margin:0.8rem 0 0.4rem;">感謝你的支持！</div>
+      <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.8;">已收到訂單，我們會盡快聯繫你 🐘🐊</p>
+      <button onclick="mvCloseModal()" style="
+        margin-top:1.2rem;background:var(--deep-sage);color:white;border:none;
+        border-radius:100px;padding:0.75rem 1.8rem;font-family:'Noto Serif TC',serif;
+        font-weight:700;font-size:0.95rem;cursor:pointer;">關閉</button>
+    </div>
+
+    <!-- form -->
+    <div id="mv-formWrap">
+      <div style="font-size:0.68rem;font-family:'Nunito',sans-serif;font-weight:800;letter-spacing:0.18em;color:var(--text-muted);margin-bottom:0.3rem;">填寫資料</div>
+      <div style="font-size:1.2rem;font-weight:900;margin-bottom:0.8rem;">確認支持方案</div>
+      <div id="mv-summary" style="background:#fff;border-radius:12px;padding:0.9rem 1rem;margin-bottom:1rem;font-size:0.85rem;line-height:2;border:1.5px solid var(--warm-tan);"></div>
+      <form id="mvOrderForm" style="display:flex;flex-direction:column;gap:0.75rem;">
+        <div>
+          <label style="font-size:0.78rem;font-weight:700;display:block;margin-bottom:0.25rem;">姓名 <span style="color:#c0392b">*</span></label>
+          <input name="姓名" required placeholder="請輸入姓名" style="width:100%;padding:0.7rem 0.9rem;border-radius:10px;border:1.5px solid var(--warm-tan);background:#fff;font-family:'Noto Serif TC',serif;font-size:0.9rem;outline:none;">
+        </div>
+        <div>
+          <label style="font-size:0.78rem;font-weight:700;display:block;margin-bottom:0.25rem;">LINE ID 或 Email <span style="color:#c0392b">*</span></label>
+          <input name="聯絡方式" required placeholder="方便我們聯繫" style="width:100%;padding:0.7rem 0.9rem;border-radius:10px;border:1.5px solid var(--warm-tan);background:#fff;font-family:'Noto Serif TC',serif;font-size:0.9rem;outline:none;">
+        </div>
+        <div>
+          <label style="font-size:0.78rem;font-weight:700;display:block;margin-bottom:0.25rem;">收件地址（選填）</label>
+          <input name="收件地址" placeholder="出貨前再確認也可以" style="width:100%;padding:0.7rem 0.9rem;border-radius:10px;border:1.5px solid var(--warm-tan);background:#fff;font-family:'Noto Serif TC',serif;font-size:0.9rem;outline:none;">
+        </div>
+        <div>
+          <label style="font-size:0.78rem;font-weight:700;display:block;margin-bottom:0.25rem;">備註</label>
+          <textarea name="備註" rows="2" placeholder="配件偏好、送禮需求…" style="width:100%;padding:0.7rem 0.9rem;border-radius:10px;border:1.5px solid var(--warm-tan);background:#fff;font-family:'Noto Serif TC',serif;font-size:0.9rem;outline:none;resize:none;"></textarea>
+        </div>
+        <input type="hidden" name="款式選擇" id="mv-f-variant">
+        <input type="hidden" name="支持方案" id="mv-f-package">
+        <input type="hidden" name="金額" id="mv-f-amount">
+        <button type="submit" id="mv-submitBtn" style="background:var(--deep-sage);color:white;border:none;border-radius:100px;padding:0.95rem;font-family:'Noto Serif TC',serif;font-weight:700;font-size:0.95rem;cursor:pointer;margin-top:0.3rem;">送出支持 🐘</button>
+        <p style="font-size:0.7rem;color:var(--text-muted);text-align:center;">資料安全儲存，僅用於出貨聯繫</p>
+      </form>
+    </div>
+  </div>
+</div>
 
 <script>
 // ── PROGRESS ANIMATION ──
@@ -1526,6 +1932,145 @@ function showShare() {
     showToast('已複製連結！快分享給朋友 ♡');
   }
 }
+
+// ── MODE TOGGLE ──
+let isMobile = false;
+function toggleMode() {
+  isMobile = !isMobile;
+  const btn = document.getElementById('modeToggleBtn');
+  const mv = document.getElementById('mobileView');
+  const dv = document.getElementById('desktopView');
+  const icon = document.getElementById('modeIcon');
+  const txt = document.getElementById('modeTxt');
+  if (isMobile) {
+    mv.classList.add('active');
+    document.body.classList.add('mob-mode');
+    btn.classList.add('mob');
+    icon.textContent = '🖥';
+    txt.textContent = '電腦版';
+    document.getElementById('mvCart').classList.remove('visible');
+    // sync countdown to mobile
+    updateMvCountdown();
+  } else {
+    mv.classList.remove('active');
+    document.body.classList.remove('mob-mode');
+    btn.classList.remove('mob');
+    icon.textContent = '📱';
+    txt.textContent = '手機專用版';
+    document.getElementById('stickyCart').classList.remove('visible');
+    mvCloseModal();
+  }
+}
+
+// auto-switch to mobile if screen is narrow
+if (window.innerWidth < 600) {
+  setTimeout(toggleMode, 300);
+}
+
+// ── MOBILE PHOTO GALLERY ──
+const mvPhotos = [
+  'https://images.vocus.cc/5419035a-f113-4d6c-9faa-a292a36e6794.png',
+  'https://images.vocus.cc/190ba138-c4e1-40d4-bda9-40ee34c5f379.png',
+  'https://images.vocus.cc/1a917c24-eadb-4967-b478-03447729e9b3.png',
+  'https://images.vocus.cc/8a3c2869-23fa-48a4-81db-a37229e325bb.png',
+  'https://images.vocus.cc/a4ebafae-5592-431b-a45d-029130749024.png',
+];
+let mvCurrentPhoto = 0;
+
+function mvSetPhoto(idx) {
+  mvCurrentPhoto = idx;
+  const img = document.getElementById('mv-mainImg');
+  img.style.opacity = '0';
+  setTimeout(() => { img.src = mvPhotos[idx]; img.style.opacity = '1'; }, 180);
+  document.querySelectorAll('.mv-thumb').forEach((t, i) => {
+    t.classList.toggle('active', i === idx);
+  });
+}
+setInterval(() => mvSetPhoto((mvCurrentPhoto + 1) % mvPhotos.length), 4500);
+
+// ── MOBILE VARIANT SELECT ──
+let mvSelectedVariant = '';
+function mvSelectChip(el, name) {
+  document.querySelectorAll('.mv-chip').forEach(c => c.classList.remove('sel'));
+  el.classList.add('sel');
+  mvSelectedVariant = name;
+  showToast('已選：' + name + ' ✓');
+}
+
+// ── MOBILE CART ──
+let mvCartPkg = '', mvCartPrice = 0;
+function mvAddCart(pkg, price) {
+  mvCartPkg = pkg; mvCartPrice = price;
+  document.getElementById('mv-cartPkg').textContent = '🛒 ' + pkg;
+  document.getElementById('mv-cartPrice').textContent = 'NT$' + price.toLocaleString();
+  document.getElementById('mvCart').classList.add('visible');
+  showToast('已選：' + pkg + ' ✓');
+}
+
+function mvCheckout() {
+  if (!mvCartPkg) return;
+  document.getElementById('mv-f-variant').value = mvSelectedVariant || '（未選擇款式）';
+  document.getElementById('mv-f-package').value = mvCartPkg;
+  document.getElementById('mv-f-amount').value = 'NT$' + mvCartPrice.toLocaleString();
+  document.getElementById('mv-summary').innerHTML =
+    `🐘 款式：<strong>${mvSelectedVariant || '（未選擇）'}</strong><br>` +
+    `📦 方案：<strong>${mvCartPkg}</strong><br>` +
+    `💰 金額：<strong style="color:var(--deep-sage)">NT$${mvCartPrice.toLocaleString()}</strong>`;
+  document.getElementById('mv-formWrap').style.display = 'block';
+  document.getElementById('mv-success').style.display = 'none';
+  document.getElementById('mvOrderForm').reset();
+  const modal = document.getElementById('mvModal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function mvCloseModal() {
+  document.getElementById('mvModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('mvModal').addEventListener('click', function(e) {
+  if (e.target === this) mvCloseModal();
+});
+
+// mobile form submit
+document.getElementById('mvOrderForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('mv-submitBtn');
+  btn.textContent = '送出中…'; btn.disabled = true;
+  const fd = new FormData(this);
+  try {
+    const res = await fetch('https://formspree.io/f/maqvyzqd', {
+      method:'POST', body:fd, headers:{'Accept':'application/json'}
+    });
+    if (res.ok) {
+      document.getElementById('mv-formWrap').style.display = 'none';
+      document.getElementById('mv-success').style.display = 'block';
+    } else {
+      showToast('送出失敗，請再試一次 😢');
+      btn.textContent = '送出支持 🐘'; btn.disabled = false;
+    }
+  } catch {
+    showToast('網路異常，請稍後再試');
+    btn.textContent = '送出支持 🐘'; btn.disabled = false;
+  }
+});
+
+// ── MOBILE COUNTDOWN SYNC ──
+function updateMvCountdown() {
+  const now = new Date();
+  const diff = endDate - now;
+  if (diff <= 0) return;
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  const set = (id, v) => { const el=document.getElementById(id); if(el) el.textContent=String(v).padStart(2,'0'); };
+  set('mv-cd-d', d); set('mv-cd-h', h); set('mv-cd-m', m); set('mv-cd-s', s);
+  const dEl = document.getElementById('mv-days'); if(dEl) dEl.textContent = d;
+}
+setInterval(updateMvCountdown, 1000);
+updateMvCountdown();
 </script>
 </body>
 </html>
